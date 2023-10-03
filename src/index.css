@@ -1,0 +1,60 @@
+
+* {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+html, body, #root {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  background: #232323;
+  gap: 0.5rem;
+  height: 100vh;
+}
+
+h1 {
+  animation: font infinite 8s;
+  transition: .3s;
+  color: #4B0409;
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+h2 {
+  color: #FAFAFA;
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+@keyframes font {
+  0% {
+    color: #4B0409;
+  }
+
+  20% {
+    color: #1ED760;
+  }
+
+  40% {
+    color: #D601C9;
+  }
+
+  60% {
+    color: #FF6A22;
+  }
+
+  80% {
+    color: #FF0079;
+  }
+
+  100% {
+    color: #0696EA;
+  }
+}
