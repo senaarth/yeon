@@ -1,4 +1,3 @@
-import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
 export const Main = styled.main`
@@ -138,19 +137,58 @@ export const Main = styled.main`
   }
 `;
 
-interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
-  $progress: number;
-}
+export const FeedbackMessage = styled.div`
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
 
-export const ProgressBar = styled.span<ProgressBarProps>`
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  * {
+    text-align: center;
+  }
 
-  width: ${(props) => props.$progress}%;
-  height: 5px;
+  h1 {
+    font-size: ${({ theme }) => theme.font.size.xl};
+    font-weight: ${({ theme }) => theme.font.weight.semibold};
+  }
 
-  background-color: ${({ theme }) => theme.colors.yeon500};
+  h2 {
+    font-size: ${({ theme }) => theme.font.size.lg};
+  }
 
-  transition: width 0.3s;
+  a {
+    color: ${({ theme }) => theme.colors.rock50};
+    font-size: ${({ theme }) => theme.font.size.md};
+    font-weight: ${({ theme }) => theme.font.weight.bold};
+    text-decoration: none;
+    margin: 16px 0;
+    border-bottom: 2px solid ${({ theme }) => theme.colors.rock50};
+  }
+
+  p {
+    font-size: ${({ theme }) => theme.font.size.sm};
+  }
 `;
+
+// interface ProgressBarProps extends HTMLAttributes<HTMLDivElement> {
+//   $progress: number;
+// }
+
+// export const ProgressBar = styled.span<ProgressBarProps>`
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+
+//   width: ${(props) => props.$progress}%;
+//   height: 5px;
+
+//   background-color: ${({ theme }) => theme.colors.yeon500};
+
+//   transition: width 0.3s;
+// `;

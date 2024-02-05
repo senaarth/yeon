@@ -4,7 +4,7 @@ import { Form } from "@quillforms/renderer-core";
 import "@quillforms/renderer-core/build-style/style.css";
 import { registerCoreBlocks } from "@quillforms/react-renderer-utils";
 
-import { Main } from "../styles/Home";
+import { Main, FeedbackMessage } from "../styles/Home";
 import { theme } from "../styles/theme";
 import { submitForm } from "../services/formSubmission";
 import { formatFormData } from "../utils/formatData";
@@ -219,8 +219,34 @@ export default function Home(): JSX.Element {
           }}
         />
       )}
-      {submissionSucceeded ? <h1>sucesso</h1> : null}
-      {submissionFailed ? <h1>erro</h1> : null}
+      {submissionSucceeded ? (
+        <FeedbackMessage>
+          <h1>Pré-cadastro completo</h1>
+          <h2>
+            Muito obrigado por se inscrever para ser um Pioneiro Yeon, em breve
+            você vai receber um convite VIP para acessar a plataforma e para uma
+            surpresinha que a gente já já vai contar lá no Instagram.
+          </h2>
+          <a
+            href="https://instagram.com/yeon.live"
+            target="_blank"
+            rel="noreferrer"
+          >
+            instagram.com/yeon.live
+          </a>
+          <p>segue lá!</p>
+        </FeedbackMessage>
+      ) : null}
+      {submissionFailed ? (
+        <FeedbackMessage>
+          <h1>Parece que encontramos algum erro no seu cadastro...</h1>
+          <h2>
+            Infelizmente aconteceu algum problema com o seu pré-cadastro.
+            <br />
+            Mas não se preocupa, recarrega a página e tenta novamente.
+          </h2>
+        </FeedbackMessage>
+      ) : null}
     </Main>
   );
 }
