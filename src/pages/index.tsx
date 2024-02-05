@@ -29,6 +29,9 @@ export default function Home(): JSX.Element {
               "label.hintText.enter": `<span class="renderer-enter-button">aperte Enter ↵</span>`,
               "label.submitBtn": "Enviar",
               "label.progress.percent": null,
+              "label.errorAlert.required": "Esse campo é obrigatório!",
+              "label.errorAlert.email": "Endereço de e-mail inválido!",
+              "label.errorAlert.url": "URL inválida!",
             },
             theme: {
               backgroundColor: theme.colors.rock950,
@@ -116,17 +119,6 @@ export default function Home(): JSX.Element {
                 },
               },
               {
-                name: "email",
-                id: "email",
-                attributes: {
-                  classnames: "email-block",
-                  required: true,
-                  label: "Qual o seu e-mail?",
-                  nextBtnLabel: "Continuar",
-                  placeholder: "",
-                },
-              },
-              {
                 id: "statement",
                 name: "statement",
                 attributes: {
@@ -200,9 +192,20 @@ export default function Home(): JSX.Element {
                   placeholder: "",
                 },
               },
+              {
+                name: "email",
+                id: "email",
+                attributes: {
+                  classnames: "email-block",
+                  required: true,
+                  label: "Qual o seu e-mail?",
+                  nextBtnLabel: "Continuar",
+                  placeholder: "",
+                },
+              },
             ],
           }}
-          onSubmit={async (data, { completeForm, setIsSubmitting }) => {
+          onSubmit={(data, { completeForm, setIsSubmitting }) => {
             setIsSubmitting(true);
 
             // @ts-ignore

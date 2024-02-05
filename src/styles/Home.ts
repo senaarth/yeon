@@ -34,8 +34,19 @@ export const Main = styled.main`
     color: ${({ theme }) => theme.colors.rock50};
   }
 
+  .renderer-components-error-message-wrapper {
+    background-color: transparent !important;
+    padding: 0 !important;
+  }
+
   .renderer-core-html-parser p {
     margin-top: 0 !important;
+  }
+
+  .renderer-components-block-label p {
+    @media (max-width: 769px) {
+      font-size: ${({ theme }) => theme.font.size.lg} !important;
+    }
   }
 
   .renderer-components-block-label p {
@@ -80,7 +91,7 @@ export const Main = styled.main`
 
     h2,
     p {
-      font-size: ${({ theme }) => theme.font.size.md};
+      font-size: ${({ theme }) => theme.font.size.sm};
     }
 
     p {
@@ -173,6 +184,24 @@ export const FeedbackMessage = styled.div`
 
   p {
     font-size: ${({ theme }) => theme.font.size.sm};
+  }
+
+  @media (max-width: 769px) {
+    h1 {
+      font-size: ${({ theme }) => theme.font.size.lg};
+    }
+
+    h2 {
+      font-size: ${({ theme }) => theme.font.size.md};
+    }
+
+    a {
+      font-size: ${({ theme }) => theme.font.size.sm};
+    }
+
+    p {
+      font-size: ${({ theme }) => theme.font.size.xs};
+    }
   }
 `;
 
