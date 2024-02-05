@@ -4,7 +4,7 @@ import { Form } from "@quillforms/renderer-core";
 import "@quillforms/renderer-core/build-style/style.css";
 import { registerCoreBlocks } from "@quillforms/react-renderer-utils";
 
-import { Main, FeedbackMessage } from "../styles/Home";
+import { Main, FeedbackMessage, Loading } from "../styles/Home";
 import { theme } from "../styles/theme";
 import { submitForm } from "../services/formSubmission";
 import { formatFormData } from "../utils/formatData";
@@ -12,6 +12,7 @@ import { formatFormData } from "../utils/formatData";
 registerCoreBlocks();
 
 export default function Home(): JSX.Element {
+  const [isSubmitting, setSubmitting] = React.useState(false);
   const [submissionSucceeded, setSubmissionSucceeded] = React.useState(false);
   const [submissionFailed, setSubmissionFailed] = React.useState(false);
 
@@ -20,7 +21,7 @@ export default function Home(): JSX.Element {
       <Head>
         <title>yeon | em breve</title>
       </Head>
-      {submissionFailed || submissionSucceeded ? null : (
+      {submissionFailed || submissionSucceeded || isSubmitting ? null : (
         <Form
           applyLogic={false}
           formId={1}
@@ -206,23 +207,34 @@ export default function Home(): JSX.Element {
             ],
           }}
           onSubmit={(data, { completeForm, setIsSubmitting }) => {
+            setSubmitting(true);
             setIsSubmitting(true);
 
             // @ts-ignore
             submitForm(formatFormData(data.answers))
               .then(() => {
                 completeForm();
+                setSubmitting(false);
                 setIsSubmitting(false);
                 setSubmissionSucceeded(true);
               })
               .catch(() => {
+                setSubmitting(false);
                 setIsSubmitting(false);
                 setSubmissionFailed(true);
               });
           }}
         />
       )}
-      {submissionSucceeded ? (
+      {isSubmitting && !submissionSucceeded && !submissionFailed ? (
+        <Loading>
+          <div className="lds-ripple">
+            <div />
+            <div />
+          </div>
+        </Loading>
+      ) : null}
+      {submissionSucceeded && !isSubmitting && !submissionFailed ? (
         <FeedbackMessage>
           <h1>Pré-cadastro completo</h1>
           <h2>
@@ -240,7 +252,7 @@ export default function Home(): JSX.Element {
           <p>segue lá!</p>
         </FeedbackMessage>
       ) : null}
-      {submissionFailed ? (
+      {submissionFailed && !isSubmitting && !submissionSucceeded ? (
         <FeedbackMessage>
           <h1>Parece que encontramos algum erro no seu cadastro...</h1>
           <h2>

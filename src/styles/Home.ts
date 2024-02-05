@@ -7,6 +7,10 @@ export const Main = styled.main`
 
   padding: 4rem 1.5rem;
 
+  input {
+    border-radius: 0;
+  }
+
   .renderer-components-field-content {
     max-width: 850px;
   }
@@ -201,6 +205,69 @@ export const FeedbackMessage = styled.div`
 
     p {
       font-size: ${({ theme }) => theme.font.size.xs};
+    }
+  }
+`;
+
+export const Loading = styled.div`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ripple div {
+    position: absolute;
+    border: 4px solid ${({ theme }) => theme.colors.yeon500};
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  .lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+
+  @keyframes lds-ripple {
+    0% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+
+    4.9% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+
+    5% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+
+    100% {
+      top: 0px;
+      left: 0px;
+      width: 72px;
+      height: 72px;
+      opacity: 0;
     }
   }
 `;
