@@ -15,9 +15,12 @@
     "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build"
   },
   "dependencies": {
+    "@quillforms/react-renderer-utils": "^5.9.1",
+    "@quillforms/renderer-core": "^5.7.0",
+    "axios": "^1.6.7",
     "next": "11.1.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {

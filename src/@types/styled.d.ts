@@ -7,6 +7,7 @@ declare module "styled-components" {
       rock300: string;
       rock600: string;
       rock700: string;
+      rock900: string;
       rock950: string;
 
       yeon500: string;
@@ -15,16 +16,16 @@ declare module "styled-components" {
     font: {
       family: string;
       size: {
-        nano: number;
-        xxxs: number;
-        xxs: number;
-        xs: number;
-        sm: number;
-        md: number;
-        lg: number;
-        xl: number;
-        xxl: number;
-        xxxl: number;
+        nano: string;
+        xxxs: string;
+        xxs: string;
+        xs: string;
+        sm: string;
+        md: string;
+        lg: string;
+        xl: string;
+        xxl: string;
+        xxxl: string;
       };
       weight: {
         regular: string;
@@ -32,6 +33,7 @@ declare module "styled-components" {
         bold: string;
       };
       lineHeight: {
+        xs: string;
         sm: string;
         md: string;
         lg: string;
